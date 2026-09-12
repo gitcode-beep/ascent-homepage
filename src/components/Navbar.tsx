@@ -51,7 +51,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     >
       <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-10 flex items-center justify-between">
         {/* Left Corner: ASCENT Logo */}
-        <div className="flex items-center justify-start">
+        <div className="flex-1 flex items-center justify-start">
           <a
             href="#home"
             onClick={(e) => {
@@ -65,8 +65,8 @@ export const Navbar: React.FC<NavbarProps> = ({
           </a>
         </div>
 
-        {/* Right Corner: Navigation Links (Home, About, Contacts) + Theme Switcher */}
-        <div className="hidden md:flex items-center justify-end gap-3">
+        {/* Center: Navigation Links (Home, About, Contact Us) */}
+        <div className="hidden md:flex items-center justify-center">
           <nav
             aria-label="Main Navigation"
             className="flex items-center gap-1.5 p-1.5 rounded-full bg-white/50 dark:bg-white/[0.07] border border-white/80 dark:border-white/15 backdrop-blur-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.06),inset_0_1px_1px_rgba(255,255,255,0.9)] dark:shadow-[0_8px_32px_0_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.12)]"
@@ -88,13 +88,16 @@ export const Navbar: React.FC<NavbarProps> = ({
               );
             })}
           </nav>
+        </div>
 
+        {/* Right Corner: Theme Switcher on Desktop, Hamburger on Mobile */}
+        <div className="flex-1 flex items-center justify-end gap-3">
           {/* Theme Mode Switcher Button with Glassmorphism */}
           <button
             onClick={toggleTheme}
             title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
             aria-label={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-            className="p-2 rounded-xl border border-white/80 dark:border-white/15 bg-white/60 dark:bg-white/[0.07] backdrop-blur-xl text-[#545454] dark:text-[#A6A6A6] hover:text-[#1E1E1E] dark:hover:text-white hover:border-[#D4A373] dark:hover:border-white/30 transition-all shadow-[0_4px_16px_rgba(0,0,0,0.04),inset_0_1px_1px_rgba(255,255,255,0.8)] dark:shadow-[0_4px_16px_rgba(0,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.1)]"
+            className="hidden md:flex p-2 rounded-xl border border-white/80 dark:border-white/15 bg-white/60 dark:bg-white/[0.07] backdrop-blur-xl text-[#545454] dark:text-[#A6A6A6] hover:text-[#1E1E1E] dark:hover:text-white hover:border-[#D4A373] dark:hover:border-white/30 transition-all shadow-[0_4px_16px_rgba(0,0,0,0.04),inset_0_1px_1px_rgba(255,255,255,0.8)] dark:shadow-[0_4px_16px_rgba(0,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.1)]"
             id="toggle-theme-mode"
           >
             {theme === 'dark' ? (
@@ -103,25 +106,25 @@ export const Navbar: React.FC<NavbarProps> = ({
               <Moon size={15} className="text-[#545454] transition-transform hover:-rotate-12" />
             )}
           </button>
-        </div>
 
-        {/* Mobile Hamburger Toggle & Theme Toggle with Glassmorphism */}
-        <div className="flex items-center gap-2 md:hidden">
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-xl border border-white/80 dark:border-white/15 bg-white/60 dark:bg-white/[0.07] backdrop-blur-xl text-[#545454] dark:text-[#A6A6A6] hover:text-[#1E1E1E] dark:hover:text-white shadow-[0_4px_16px_rgba(0,0,0,0.04),inset_0_1px_1px_rgba(255,255,255,0.8)] dark:shadow-[0_4px_16px_rgba(0,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.1)]"
-            aria-label="Toggle theme mode"
-          >
-            {theme === 'dark' ? <Sun size={18} className="text-[#D4A373]" /> : <Moon size={18} />}
-          </button>
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-xl border border-white/80 dark:border-white/15 bg-white/60 dark:bg-white/[0.07] backdrop-blur-xl text-[#545454] dark:text-[#A6A6A6] hover:text-[#1E1E1E] dark:hover:text-white shadow-[0_4px_16px_rgba(0,0,0,0.04),inset_0_1px_1px_rgba(255,255,255,0.8)] dark:shadow-[0_4px_16px_rgba(0,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.1)]"
-            aria-label="Toggle navigation menu"
-            id="mobile-menu-toggle"
-          >
-            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+          {/* Mobile Hamburger Toggle & Theme Toggle with Glassmorphism */}
+          <div className="flex items-center gap-2 md:hidden">
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-xl border border-white/80 dark:border-white/15 bg-white/60 dark:bg-white/[0.07] backdrop-blur-xl text-[#545454] dark:text-[#A6A6A6] hover:text-[#1E1E1E] dark:hover:text-white shadow-[0_4px_16px_rgba(0,0,0,0.04),inset_0_1px_1px_rgba(255,255,255,0.8)] dark:shadow-[0_4px_16px_rgba(0,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.1)]"
+              aria-label="Toggle theme mode"
+            >
+              {theme === 'dark' ? <Sun size={18} className="text-[#D4A373]" /> : <Moon size={18} />}
+            </button>
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 rounded-xl border border-white/80 dark:border-white/15 bg-white/60 dark:bg-white/[0.07] backdrop-blur-xl text-[#545454] dark:text-[#A6A6A6] hover:text-[#1E1E1E] dark:hover:text-white shadow-[0_4px_16px_rgba(0,0,0,0.04),inset_0_1px_1px_rgba(255,255,255,0.8)] dark:shadow-[0_4px_16px_rgba(0,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.1)]"
+              aria-label="Toggle navigation menu"
+              id="mobile-menu-toggle"
+            >
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </div>
       </div>
 
