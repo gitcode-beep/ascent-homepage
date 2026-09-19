@@ -94,7 +94,11 @@ export default function App() {
           const top = el.offsetTop;
           const height = el.offsetHeight;
           if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(section);
+            let mappedSection = section;
+            if (['initiatives', 'projects', 'events', 'team', 'achievements'].includes(section)) {
+              mappedSection = 'about';
+            }
+            setActiveSection(mappedSection);
             break;
           }
         }
@@ -155,14 +159,7 @@ export default function App() {
         <HeroSection
           accentColor1={activePair.c1}
           accentColor2={activePair.c2}
-          onExploreClick={() => {
-            const el = document.getElementById('initiatives');
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
-          }}
-          onLaunchLabClick={() => {
-            const el = document.getElementById('projects');
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
-          }}
+          onRegisterClick={() => handleOpenRegistration()}
         />
 
         {/* About Section */}

@@ -166,6 +166,7 @@ export const TEAM: TeamMember[] = [
     domain: 'Robotics & Guidance Systems',
     bio: 'Pioneered decentralised flight swarm topologies at CSAIL; former technical fellow at NASA JPL.',
     initials: 'SL',
+    image: '/assets/team/sarah-lin.jpg',
     socials: { x: '#', linkedin: '#', github: '#' }
   },
   {
@@ -175,6 +176,7 @@ export const TEAM: TeamMember[] = [
     domain: 'Quantum Optics & Cryptography',
     bio: 'Author of 18 foundational papers on superconducting coherence; advises international quantum standards committees.',
     initials: 'MV',
+    image: '/assets/team/marcus-vance.jpg',
     socials: { linkedin: '#', github: '#' }
   },
   {
@@ -184,6 +186,7 @@ export const TEAM: TeamMember[] = [
     domain: 'Orbital Dynamics & Satellite Engineering',
     bio: 'Managed commercial launch manifests and CubeSat deployment architectures across 14 orbital missions.',
     initials: 'ER',
+    image: '/assets/team/elena-rostova.jpg',
     socials: { x: '#', linkedin: '#' }
   },
   {
@@ -193,6 +196,7 @@ export const TEAM: TeamMember[] = [
     domain: 'Carbon Nanotubes & Metamaterials',
     bio: 'Invented high-durability thermal barrier coatings deployed on reusable atmospheric reentry vehicles.',
     initials: 'TA',
+    image: '/assets/team/tariq-almansoor.jpg',
     socials: { linkedin: '#', github: '#' }
   }
 ];

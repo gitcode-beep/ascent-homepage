@@ -56,6 +56,7 @@ export interface TeamMember {
   domain: string;
   bio: string;
   initials: string;
+  image?: string;
   socials?: {
     github?: string;
     linkedin?: string;

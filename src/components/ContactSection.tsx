@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Mail, MapPin, ShieldCheck, Send, CheckCircle2, Globe, Clock, MessageSquare } from 'lucide-react';
+import { motion } from 'motion/react';
+import { ShieldCheck, Send, CheckCircle2, MessageSquare } from 'lucide-react';
 
 interface ContactSectionProps {
   accentColor1: string;
@@ -32,31 +33,30 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   return (
     <section id="contacts" className="relative py-24 px-4 sm:px-6 lg:px-8 z-10 border-t border-slate-200 dark:border-[#545454]/30">
       <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        {/* Section Header with Scroll Reveal */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6"
+        >
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-300/80 dark:border-[#545454]/50 bg-white/80 dark:bg-[#0c0c0c] mb-4 shadow-sm">
-              <span
-                className="w-1.5 h-1.5 rounded-full"
-                style={{ backgroundColor: accentColor1 }}
-              />
-              <span className="font-body text-xs text-slate-600 dark:text-[#A6A6A6] tracking-wider uppercase">
-                Direct Channels & Communications
-              </span>
-            </div>
             <h2 className="font-heading text-2xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight text-slate-900 dark:text-white">
               Connect With ASCENT
             </h2>
           </div>
-          <p className="font-body text-sm text-slate-600 dark:text-[#A6A6A6] max-w-md">
-            Direct channels for research consortiums, academic fellowships, hardware demonstrations, and strategic sovereign partnerships.
-          </p>
-        </div>
+        </motion.div>
 
-        {/* Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left Column: Interactive Contact Form (7 cols) */}
-          <div className="lg:col-span-7 rounded-2xl border border-slate-200 dark:border-[#545454]/40 bg-white/80 dark:bg-[#070707]/90 backdrop-blur-xl p-6 sm:p-8 shadow-sm dark:shadow-none">
+        {/* Centered Direct Inquiry Form */}
+        <div className="max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="rounded-2xl border border-slate-200 dark:border-[#545454]/40 bg-white/80 dark:bg-[#070707]/90 backdrop-blur-xl p-6 sm:p-10 shadow-sm dark:shadow-none"
+          >
             {submitted ? (
               <div className="py-12 flex flex-col items-center text-center space-y-4">
                 <div
@@ -84,7 +84,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="flex items-center gap-2 mb-2">
                   <MessageSquare size={16} style={{ color: accentColor1 }} />
                   <h3 className="font-heading text-base font-bold uppercase text-slate-900 dark:text-white">
@@ -161,7 +161,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
                   <button
                     type="submit"
-                    className="font-button text-xs font-bold px-6 py-2.5 rounded-xl bg-slate-900 text-white hover:bg-black dark:bg-white dark:text-black dark:hover:bg-[#EAE4D9] transition-all flex items-center gap-2 shadow-sm active:scale-95"
+                    className="font-button text-xs font-bold px-6 py-2.5 rounded-xl bg-slate-900 text-white hover:bg-black dark:bg-white dark:text-black dark:hover:bg-[#EAE4D9] transition-all flex items-center gap-2 shadow-sm active:scale-95 cursor-pointer"
                   >
                     <span>Transmit Message</span>
                     <Send size={13} />
@@ -169,107 +169,11 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 </div>
               </form>
             )}
-          </div>
-
-          {/* Right Column: Key Contacts & Coordinates (5 cols) */}
-          <div className="lg:col-span-5 space-y-4">
-            {/* Primary Hub Card */}
-            <div className="p-6 rounded-2xl border border-slate-200 dark:border-[#545454]/40 bg-white/80 dark:bg-[#080808]/90 backdrop-blur-xl shadow-sm dark:shadow-none">
-              <div className="flex items-center gap-3 mb-3">
-                <div
-                  className="w-8 h-8 rounded-lg flex items-center justify-center border"
-                  style={{
-                    backgroundColor: `${accentColor1}15`,
-                    borderColor: `${accentColor1}40`,
-                    color: accentColor1,
-                  }}
-                >
-                  <MapPin size={16} />
-                </div>
-                <div>
-                  <h4 className="font-heading text-sm font-bold uppercase text-slate-900 dark:text-white">
-                    Consortium Headquarters
-                  </h4>
-                  <p className="font-body text-[11px] text-slate-500 dark:text-[#A6A6A6]">
-                    Global Research & Fabrication Cluster
-                  </p>
-                </div>
-              </div>
-              <p className="font-body text-xs text-slate-600 dark:text-[#A6A6A6] leading-relaxed">
-                Campus Biotech, Chemin des Mines 9<br />
-                1202 Geneva, Switzerland<br />
-                <span className="text-[11px] text-slate-400 dark:text-[#777]">Secondary Node: Cambridge Innovation Center, MA, USA</span>
-              </p>
-            </div>
-
-            {/* Direct Email Channels Card */}
-            <div className="p-6 rounded-2xl border border-slate-200 dark:border-[#545454]/40 bg-white/80 dark:bg-[#080808]/90 backdrop-blur-xl shadow-sm dark:shadow-none">
-              <div className="flex items-center gap-3 mb-3">
-                <div
-                  className="w-8 h-8 rounded-lg flex items-center justify-center border"
-                  style={{
-                    backgroundColor: `${accentColor2}15`,
-                    borderColor: `${accentColor2}40`,
-                    color: accentColor2,
-                  }}
-                >
-                  <Mail size={16} />
-                </div>
-                <div>
-                  <h4 className="font-heading text-sm font-bold uppercase text-slate-900 dark:text-white">
-                    Electronic Dispatch
-                  </h4>
-                  <p className="font-body text-[11px] text-slate-500 dark:text-[#A6A6A6]">
-                    Direct Inboxes by Department
-                  </p>
-                </div>
-              </div>
-
-              <div className="space-y-2 font-body text-xs">
-                <div className="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-[#545454]/30">
-                  <span className="text-slate-500 dark:text-[#A6A6A6]">Partnerships & Labs:</span>
-                  <a
-                    href="mailto:consortium@ascent-platform.org"
-                    className="font-medium text-slate-900 dark:text-white hover:underline"
-                  >
-                    consortium@ascent-platform.org
-                  </a>
-                </div>
-                <div className="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-[#545454]/30">
-                  <span className="text-slate-500 dark:text-[#A6A6A6]">Fellowships:</span>
-                  <a
-                    href="mailto:fellows@ascent-platform.org"
-                    className="font-medium text-slate-900 dark:text-white hover:underline"
-                  >
-                    fellows@ascent-platform.org
-                  </a>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-slate-500 dark:text-[#A6A6A6]">Press & Media:</span>
-                  <a
-                    href="mailto:press@ascent-platform.org"
-                    className="font-medium text-slate-900 dark:text-white hover:underline"
-                  >
-                    press@ascent-platform.org
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Protocol Guarantee Card */}
-            <div className="p-4 rounded-xl border border-slate-200 dark:border-[#545454]/30 bg-slate-100/70 dark:bg-[#0c0c0c] flex items-center justify-between text-xs font-body text-slate-600 dark:text-[#A6A6A6]">
-              <div className="flex items-center gap-2">
-                <Clock size={14} style={{ color: accentColor1 }} />
-                <span>Response SLA: &lt; 24h</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Globe size={14} style={{ color: accentColor2 }} />
-                <span>UTC Timezone Coverage</span>
-              </div>
-            </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
   );
 };
+
+export default ContactSection;

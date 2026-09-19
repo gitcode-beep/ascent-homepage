@@ -250,12 +250,16 @@ export const InteractiveHolodeck3D: React.FC<InteractiveHolodeck3DProps> = ({
       <div className="flex flex-wrap items-center justify-between border-b border-slate-200 dark:border-[#545454]/40 px-5 py-4 bg-slate-50/90 dark:bg-[#0a0a0a]/90">
         <div className="flex items-center gap-3">
           <div className="w-2.5 h-2.5 rounded-full bg-[#004AAD] animate-pulse" />
-          <div>
-            <h4 className="font-heading text-xs md:text-sm uppercase tracking-wider text-slate-900 dark:text-white">
-              {title}
-            </h4>
-            <p className="font-body text-[11px] text-slate-500 dark:text-[#A6A6A6]">{subtitle}</p>
-          </div>
+          {(title || subtitle) && (
+            <div>
+              {title && (
+                <h4 className="font-heading text-xs md:text-sm uppercase tracking-wider text-slate-900 dark:text-white">
+                  {title}
+                </h4>
+              )}
+              {subtitle && <p className="font-body text-[11px] text-slate-500 dark:text-[#A6A6A6]">{subtitle}</p>}
+            </div>
+          )}
         </div>
 
         {/* HUD Status tags */}

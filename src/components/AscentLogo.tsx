@@ -81,7 +81,7 @@ export const AscentLogo: React.FC<AscentLogoProps> = ({
       {showWordmark && (
         <div className="flex flex-col">
           <span
-            className={`font-heading tracking-[0.28em] uppercase text-[#1E1E1E] dark:text-white font-bold leading-none ${
+            className={`font-heading tracking-[0.28em] uppercase text-[#1E1E1E] dark:text-white font-normal leading-none ${
               wordmarkClassName || 'text-sm md:text-base'
             }`}
           >
